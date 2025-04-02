@@ -2,6 +2,15 @@ extends layout
 
 block content
   h1= title
-  p Welcome to my Express and Pug server – Render is live
+  p Welcome to Express Page
+  button(type="button", class="btn btn-secondary", onclick="faster()") Sample Button
+  div#faster Add in extra
 
-  button(type="button", class="btn btn-secondary") Press me
+  script.
+    let value = 1;
+    let amt = 2;
+    function faster() {
+      amt *= 2;
+      value += amt;
+      document.getElementById("faster").innerHTML = `Faster ${value} times ${amt}`;
+    }
