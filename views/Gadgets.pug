@@ -1,16 +1,24 @@
-extends layout
+ extends layout
 
 block content
-  h1= title
-  p Welcome to Express Page
-  button(type="button", class="btn btn-secondary", onclick="faster()") Sample Button
-  div#faster Add in extra
+  h1 Search Results: Gadgets
 
-  script.
-    let value = 1;
-    let amt = 2;
-    function faster() {
-      amt *= 2;
-      value += amt;
-      document.getElementById("faster").innerHTML = `Faster ${value} times ${amt}`;
-    }
+  //- 1) Declare the hardcoded data
+  - var results = [
+  -   { gadget_name: 'Smart Watch', brand: 'FitBit', battery_life: 24 },
+  -   { gadget_name: 'Noise Cancelling Headphones', brand: 'Sony', battery_life: 30 },
+  -   { gadget_name: 'Portable Speaker', brand: 'JBL', battery_life: 15 }
+  - ]
+
+  //- 3) Outer container
+  .container-fluid
+    //- 4) Row div
+    .row
+      //- 5) Loop through each gadget
+      each gadget in results
+        //- 6) Inner column for each gadget
+        .col-sm-2
+          h5 #{gadget.gadget_name}
+          p Brand: #{gadget.brand}
+          p Battery: #{gadget.battery_life} hrs
+
